@@ -158,9 +158,10 @@ To use Cortex AI Functions, users require:
 - The `USE AI FUNCTIONS` account-level privilege (granted to `PUBLIC` by default).
 
 ```sql
--- Grant AI function access to a specific role
-GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE analyst;
-GRANT USE AI FUNCTIONS ON ACCOUNT TO ROLE analyst;
+-- Grant AI function access to a specific role (only needed if your account has revoked the PUBLIC defaults;
+-- an administrator runs this, because Snowflake documents that ACCOUNTADMIN manages USE AI FUNCTIONS)
+GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE CORTEX_TUTORIAL_ROLE;
+GRANT USE AI FUNCTIONS ON ACCOUNT TO ROLE CORTEX_TUTORIAL_ROLE;
 ```
 
 **Cost considerations**: AI Functions incur compute costs based on the number of tokens processed. Snowflake recommends
